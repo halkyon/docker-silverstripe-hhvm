@@ -1,0 +1,12 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server ipv6only=on;
+
+	root /var/www;
+	index index.html index.htm;
+
+	server_name localhost;
+
+	include hhvm.conf;
+	include silverstripe.conf;
+}

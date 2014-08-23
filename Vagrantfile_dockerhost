@@ -1,0 +1,20 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# this file is useful if docker can't natively run on the machine. It spins
+# up a VM to host the docker containers
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.require_version ">= 1.6.0"
+
+WEB_FORWARDED_PORT = ENV['FORWARDED_PORT'] || "8000"
+WEBROOT_PATH = ENV['WEBROOT_PATH'] || ""
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+	config.vm.box = "ubuntu/trusty64"
+	config.vm.provision "docker"
+	config.vm.provision "shell", inline: "ps aux | grep 'sshd:' | awk '{print $2}' | xargs kill"
+	config.vm.network :forwarded_port, guest: WEB_FORWARDED_PORT, host: WEB_FORWARDED_PORT
+	config.vm.synced_folder WEBROOT_PATH, "/var/www"
+end
