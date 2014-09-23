@@ -12,13 +12,9 @@ Base image is Ubuntu 14.04 LTS "trusty". Additional software installed:
  * curl
  * supervisor
  * nginx 1.4.6
- * HHVM (nightly)
+ * HHVM 3.3
  * MariaDB 5.5.37
  * composer
-
-All are installed to the latest package Ubuntu provides, except for HHVM which is currently
-using the nightly builds. Once HHVM 3.3 stable is released, this will be switched over to
-the stable package.
 
 ## Usage
 
