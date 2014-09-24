@@ -8,7 +8,7 @@ RUN apt-get -qqy install wget curl
 RUN wget --quiet -O - http://dl.hhvm.com/conf/hhvm.gpg.key | apt-key add -
 RUN echo deb http://dl.hhvm.com/ubuntu trusty main | tee /etc/apt/sources.list.d/hhvm.list
 RUN apt-get -qq update
-RUN apt-get -qqy install mariadb-server nginx hhvm supervisor
+RUN apt-get -qqy install supervisor mariadb-server nginx hhvm libgmp-dev libmemcached-dev
 
 RUN /usr/bin/update-alternatives --install /usr/bin/php php /usr/bin/hhvm 60
 
