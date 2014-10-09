@@ -20,14 +20,14 @@ Base image is Ubuntu 14.04 LTS "trusty". Additional software installed:
 
 ### Building
 
-	docker build -t docker-ss-hhvm .
+	docker build -t halkyon/docker-silverstripe-hhvm .
 
 ### Running
 
 The following command will mount your SilverStripe site onto the container as /var/www/, and forward port 80
 to port 8000 on the host. You can access the site via http://localhost:8000
 
-	docker run -d -p 8000:80 -v /path/to/site:/var/www docker-ss-hhvm
+	docker run -d -p 8000:80 -v /path/to/site:/var/www halkyon/docker-silverstripe-hhvm
 
 ### With Vagrant
 
