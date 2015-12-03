@@ -12,7 +12,7 @@ WEB_FORWARDED_PORT = ENV['FORWARDED_PORT'] || "8000"
 WEBROOT_PATH = ENV['WEBROOT_PATH'] || ""
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-	config.vm.box = "debian/jessie64"
+	config.vm.box = "ubuntu/trusty64"
 	config.vm.provision "docker"
 	config.vm.provision "shell", inline: "ps aux | grep 'sshd:' | awk '{print $2}' | xargs kill"
 	config.vm.network :forwarded_port, guest: WEB_FORWARDED_PORT, host: WEB_FORWARDED_PORT
