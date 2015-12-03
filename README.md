@@ -6,14 +6,14 @@ Source to build a docker container suitable for running a PHP framework like Sil
 
 This was created specifically for running SilverStripe sites, but could be easily modified to run any PHP framework.
 
-Base image is Ubuntu 14.04 LTS "trusty". Additional software installed:
+Base image is Debian 8 "jessie". Additional software installed:
 
  * wget
  * curl
  * supervisor
- * nginx 1.4.6
- * HHVM 3.3
- * MariaDB 5.5.37
+ * nginx 1.6.2
+ * HHVM 3.10
+ * MariaDB 10.0.22
  * composer
 
 ## Usage

@@ -1,14 +1,14 @@
-FROM ubuntu:trusty
+FROM debian:jessie
 MAINTAINER Sean Harvey <sean@silverstripe.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get -qq update
+RUN apt-get -q update
 RUN apt-get -qqy install wget curl
 RUN wget --quiet -O - http://dl.hhvm.com/conf/hhvm.gpg.key | apt-key add -
-RUN echo deb http://dl.hhvm.com/ubuntu trusty main | tee /etc/apt/sources.list.d/hhvm.list
-RUN apt-get -qq update
-RUN apt-get -qqy install supervisor mariadb-server nginx hhvm libgmp-dev libmemcached-dev
+RUN echo deb http://dl.hhvm.com/debian jessie main | tee /etc/apt/sources.list.d/hhvm.list
+RUN apt-get -q update
+RUN apt-get -qqy install supervisor mariadb-server mariadb-client nginx hhvm
 
 RUN /usr/bin/update-alternatives --install /usr/bin/php php /usr/bin/hhvm 60
 
@@ -34,4 +34,4 @@ RUN chown root:root /etc/nginx/sites-available/default
 
 EXPOSE 80
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
